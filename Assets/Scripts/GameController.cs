@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 	[SerializeField] ScreenShower gameOverScreen;
 	[SerializeField] ScreenShower LevelCompletedScreen;
 	[SerializeField] LevelChanger levelChanger;
+	[SerializeField] AudioClip gameCompletedAudioClip;
 
 	List<IndicatorMapper> passangerIndicatorList;
 	IndicatorMapper mothershipIndicator;
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour {
 		Assert.IsNotNull (mothershipGate);
 		Assert.IsNotNull (gameOverScreen);
 		Assert.IsNotNull (levelChanger);
+		// Assert.IsNotNull (PassangerSound);
 
 		SpriteRenderer indicator = Instantiate (mothershipIndicatorPrefab, new Vector3 (0f, 0f, 5f), Quaternion.identity);
 		indicator.gameObject.SetActive (false);
@@ -72,6 +74,9 @@ public class GameController : MonoBehaviour {
 	}
 
 	void OnGameWin () {
+		audioSource.PlayOneShot(gameCompletedAudioClip);
+		//Destroy Player - this is just a quick fix to disable gameplay after game completed and prevent loosing after wining!
+		Destroy(player.gameObject);
 		LevelCompletedScreen.ShowScreen();
 	}
 
@@ -128,7 +133,6 @@ public class GameController : MonoBehaviour {
 
 	private void Update () {
 		DrawAllIndicators ();
-
 	}
 
 	private void DrawIndicator (IndicatorMapper im) {

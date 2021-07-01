@@ -35,7 +35,6 @@ public class UIController : MonoBehaviour {
 
 	public void SetLifes(int val) {
 		lifePanel.Score = val;
-		Debug.Log("lifes = " + val);
 	}
 
 

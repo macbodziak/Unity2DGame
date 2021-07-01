@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MainMenuController : MonoBehaviour
 {
     int levelToLoad = 1;
-    int levelsUnlocked = 1;
+    int levelsUnlocked = 2;
     public static MainMenuController instance = null;
     [SerializeField] LevelChanger levelChanger;
     [SerializeField] Button prevLevelButton;

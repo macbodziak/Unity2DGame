@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] ParticleSystem rebounceEffectPrefab;
     [SerializeField] AudioClip explosionAudioClip;
     [SerializeField] AudioClip rebounceAudioClip;
+    [SerializeField] AudioClip passangerAudioClip;
     [SerializeField] float rebounceForce = 5f;
     [SerializeField] int maxLifes = 3;
     [SerializeField] float maxSpeed = 10f;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         set
         {
             occupied = value;
+            audioSource.PlayOneShot(passangerAudioClip);
             UIController.Instance.SetPlayerOccupied(value);
         }
     }
@@ -101,7 +103,7 @@ public class Player : MonoBehaviour
         Assert.IsNotNull(explosionAudioClip);
         Assert.IsNotNull(rebounceAudioClip);
         Assert.IsNotNull(audioSource);
-        Lifes = maxLifes;
+        lifes = maxLifes;
 
         ps.Stop();
     }

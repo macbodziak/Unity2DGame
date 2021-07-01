@@ -7,6 +7,7 @@ public class ScorePanel : MonoBehaviour {
 
 	[SerializeField] Sprite pointSprite;
 	[SerializeField] Sprite noPointSprite;
+	[SerializeField] bool startFull = false;
 	Image[] images;
 	int score = 0;
 
@@ -39,11 +40,13 @@ public class ScorePanel : MonoBehaviour {
 				rt = images[i].GetComponent<RectTransform>();
 				rt.sizeDelta = new Vector2(64,64);
 			}
-			// Rect r = rt.rect;
-			// r.height = 64;
-			// r.width = 328; // 64 * 5 + 4 * 2;
-			// rt.rect = r;
-
+		}
+		if(startFull == true)
+		{
+			foreach(Image image in images)
+			{
+				image.sprite = pointSprite;
+			}
 		}
 	}
 }
